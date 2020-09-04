@@ -1,0 +1,34 @@
+<%- include("partials/header") %>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            
+            <% if(Images.length > 0) { %>
+                <div class="card-columns">
+                    <% Images.forEach(image => { %>
+                        <div class="card">
+                            <img src="../uploads/<%= image.path %>" class="card-img-top" alt="<%= image.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= image.name %></h5>
+                                <p class="card-text"><%= image.description %></p>
+                                <p class="card-text"><span>Type: </span> <%= image.mimetype %></p>
+                                <p class="card-text"><span>Size: </span> <%= image.size %></p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/view/<%= image._id %>" class="btn btn-block btn-primary">View Image</a>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <div class="alert alert-secondary text-center">
+                    <p class="mb-0">Data not found</p>
+                </div>
+            <% } %>
+            
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer") %>
